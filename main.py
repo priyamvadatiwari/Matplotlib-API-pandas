@@ -1,5 +1,3 @@
-
-
 import requests
 import json
 from plotly.graph_objs import Scattergeo, Layout
@@ -42,8 +40,7 @@ with open(filename) as file_obj:
 
 '''
 Step 3: Analysis and Visualization
-Question1(A):Using Scattergeo, plot the current temperature in the aforementioned cities. The plot
-should have:
+Using Scattergeo, plot the current temperature in the aforementioned cities. The plot should have:
 '''
 
 #Creating empty list to add the date from the obj
@@ -77,7 +74,7 @@ my_layout = Layout(title = "Temperature Map")
 figure = {'data': data, 'layout': my_layout}
 offline.plot(figure, filename = 'temperaturemap.html')   #this will create the temperature map of the 20 cities in Canada.
 
-'''Question 1(B):Using Scattergeo, plot the current humidity in the aforementioned cities.'''
+'''Using Scattergeo, plot the current humidity in the aforementioned cities.'''
 
 humidities,hum_longs,hum_lats = [],[],[]   
 #For loop to read through each humidity, longitude and latitude for locations. 
@@ -108,7 +105,7 @@ my_layout2 = Layout(title = "City wise humidity Map")
 figure = {'data': dataHum, 'layout': my_layout2}
 offline.plot(figure, filename = 'humiditymap.html')   #this will create the humidity map of the 20 cities in Canada.
 
-'''Question 3.1.C: Using Matplotlib, plot a clustered bar chart for temperature and humidity'''
+'''Using Matplotlib, plot a clustered bar chart for temperature and humidity'''
 
 #continuing from the above code, storing both the lists in the dictionary and then create a dataframe.
 weather_dict = {
@@ -130,7 +127,7 @@ plt.title('Humidity vs Temperature')
 plt.show()
 
 
-'''Question 2 : using Plotly, create a bar plot with the count of each weather description.
+'''using Plotly, create a bar plot with the count of each weather description.
 ##For each of the cities, extract the following information:'''
 
 weather_desc = []
@@ -162,7 +159,7 @@ ax.set_xlabel('Count')
 plt.title('Unique Weather description')
 plt.show()
 
-'''Question 3: From the given list of cities, extract and print the cities with the most wind speed as
+'''From the given list of cities, extract and print the cities with the most wind speed as
 well as the least wind speed. Don’t forget to print out the wind speeds for both of them as well.'''
 
 winds, cities_sp = [],[]
@@ -186,7 +183,7 @@ min_ind = dfwind["speed"].idxmin()                  # Index of minimum in column
 print(f"The city with minimum wind speed of {dfwind['speed'].min()} is {dfwind['city'][min_ind]}")
 print(f"The city with maximum wind speed of {dfwind['speed'].max()} is {dfwind['city'][max_ind]}")
 
-'''Question 4: for the list of the cities, using data.json, for each city do the following:'''
+'''for the list of the cities, using data.json, for each city do the following:'''
 def avgtime(timestringlist):
   minutecounts = []
   for val in timestringlist:
@@ -212,7 +209,7 @@ for city in cities_weather:
 print(f"The average length of the daylight in all the cities is {avgtime(daylight)}")
 
 
-'''Question 5: for the each city, using data.json:
+'''for the each city, using data.json:
 1. Extract the actual temperature from the dictionary as well as the feels like temperature
 and calculate the difference between those values.
 2. Following that, print out the name of the city and the difference between the actual
@@ -229,8 +226,7 @@ for temp in cities_weather:
 #I think there is a significant difference in the actual temperatures and 'feels-like' temperatures for some of the cities. It is mainly due to the local weather conditions such as humidity, and wind speed, air temperature."
 
 
-'''Question 6:
-Select any city from the list of cities mentioned above.
+'''Select any city from the list of cities mentioned above.
 2. Using data.json, get the weather data for the city of your choice and store it in a
 dictionary.
 3. From that dictionary, extract the wind speed.
@@ -251,5 +247,3 @@ fig6 = go.Figure(go.Indicator(
   domain = {'x' :[0,1],'y':[0,1]},
   title = {'text': 'Wind Speed for Calgary'}))
 offline.plot(fig6, filename = "windspeed.html")
-
-'''**********************End Of Final Project - Python ****************************'''
